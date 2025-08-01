@@ -34,3 +34,6 @@ plot_buildings_overlay <- function(buildings) {
     geom_sf(data = buildings$structured, color = "blue", fill = NA) +
     ggtitle("Unstructured (Red) vs Structured (Blue) Buildings")
 }
+
+
+
