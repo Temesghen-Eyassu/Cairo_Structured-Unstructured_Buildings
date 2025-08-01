@@ -1,48 +1,58 @@
-#' Calculate area and compactness, and plot compactness maps
+#' Calculate area and compactness, summarize stats, and plot compactness maps
 #'
-#' This function calculates the area and shape compactness for each building in both structured
-#' and unstructured datasets. It then plots them side by side using a viridis color scale.
+#' This function replicates a full analysis pipeline: calculates area and compactness,
+#' prints summary statistics, and returns a compactness comparison plot.
 #'
-#' Compactness is calculated using the formula: \eqn{4 * \pi * \text{area} / \text{perimeter}^2}.
-#' Values range from 0 to 1, where 1 represents a perfect circle.
-#'
-#' @param buildings A list of two `sf` objects: `unstructured` and `structured`. Each must contain polygon features.
-#' @return A list of two items:
+#' @param buildings A list with two `sf` objects named `unstructured` and `structured`.
+#' @return A list with:
 #'   \describe{
-#'     \item{data}{The modified `buildings` list with new columns: `area` and `compactness` (unitless).}
-#'     \item{plot}{A patchwork side-by-side ggplot showing compactness maps.}
+#'     \item{data}{The updated `buildings` list with `area` and `compactness` columns (with units).}
+#'     \item{plot}{A ggplot2/patchwork plot showing compactness maps side-by-side.}
 #'   }
 #' @import sf
-#' @import units
 #' @import dplyr
+#' @import units
 #' @import ggplot2
 #' @importFrom patchwork plot_layout
 #' @export
-analyze_and_plot_compactness <- function(buildings) {
-  # Calculate area and compactness for unstructured
+analyze_compactness_full <- function(buildings) {
+  # Compute area and compactness with units
   buildings$unstructured <- buildings$unstructured %>%
     mutate(
       area = st_area(.),
-      compactness = drop_units(4 * pi * area / (st_perimeter(.)^2))
+      compactness = 4 * pi * area / (st_perimeter(.)^2)
     )
 
-  # Calculate area and compactness for structured
   buildings$structured <- buildings$structured %>%
     mutate(
       area = st_area(.),
-      compactness = drop_units(4 * pi * area / (st_perimeter(.)^2))
+      compactness = 4 * pi * area / (st_perimeter(.)^2)
     )
 
-  # Create side-by-side compactness maps
+  # Print summaries
+  message("Summary of Unstructured Building Area:")
+  print(summary(buildings$unstructured$area))
+  message("Summary of Structured Building Area:")
+  print(summary(buildings$structured$area))
+  message("Summary of Unstructured Compactness:")
+  print(summary(buildings$unstructured$compactness))
+  message("Summary of Structured Compactness:")
+  print(summary(buildings$structured$compactness))
+
+  # Drop units for plotting
+  buildings$unstructured$compactness_numeric <- drop_units(buildings$unstructured$compactness)
+  buildings$structured$compactness_numeric   <- drop_units(buildings$structured$compactness)
+
+  # Create plots
   p1 <- ggplot() +
-    geom_sf(data = buildings$unstructured, aes(fill = compactness), color = NA) +
-    scale_fill_viridis_c(name = "Compactness", option = "C") +
+    geom_sf(data = buildings$unstructured, aes(fill = compactness_numeric), color = NA) +
+    scale_fill_viridis_c(name = "Shape Compactness", option = "C") +
     ggtitle("Unstructured Buildings") +
     theme_void()
 
   p2 <- ggplot() +
-    geom_sf(data = buildings$structured, aes(fill = compactness), color = NA) +
-    scale_fill_viridis_c(name = "Compactness", option = "C") +
+    geom_sf(data = buildings$structured, aes(fill = compactness_numeric), color = NA) +
+    scale_fill_viridis_c(name = "Shape Compactness", option = "C") +
     ggtitle("Structured Buildings") +
     theme_void()
 
@@ -57,3 +67,5 @@ analyze_and_plot_compactness <- function(buildings) {
     plot = compactness_plot
   ))
 }
+
+
