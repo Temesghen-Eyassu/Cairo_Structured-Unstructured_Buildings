@@ -1,0 +1,13 @@
+Package: NewCairoStructuredUnstructuredBuildings
+Title:  Building Footprint Analysis for Structured and Unstructured Urban Forms
+Version: 0.0.0.9000
+Authors@R: 
+    person("Temesghen", "Sereke", , "temesghensereke@gmail.com", role = c("aut", "cre"))
+Description: This package provides tools for analyzing and visualizing building footprints
+    in structured and unstructured urban forms. It includes functions for spatial
+    metrics, aggregation using hexbin methods, and thematic mapping.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
