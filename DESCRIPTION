@@ -18,4 +18,5 @@ Imports:
     hexbin,
     patchwork,
     ggplot2,
-    viridis
+    viridis, 
+    rlang

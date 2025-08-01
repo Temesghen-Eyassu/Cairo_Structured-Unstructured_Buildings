@@ -8,7 +8,7 @@ plot_interactive_area_map(buildings)
 }
 \arguments{
 \item{buildings}{A list with two \code{sf} objects: \code{structured} and \code{unstructured}.
-Each must have a numeric \code{area} column.}
+Each must have a numeric \code{area} column or else it will be computed.}
 }
 \value{
 A \code{tmap} interactive map (in "view" mode).

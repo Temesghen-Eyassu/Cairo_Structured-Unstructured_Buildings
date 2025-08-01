@@ -62,3 +62,4 @@ plot_area_bin_comparison <- function(structured, unstructured) {
 }
 
 
+
