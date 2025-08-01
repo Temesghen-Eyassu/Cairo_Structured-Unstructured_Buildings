@@ -17,4 +17,5 @@ Imports:
     units,
     hexbin,
     patchwork,
-    ggplot2
+    ggplot2,
+    viridis
