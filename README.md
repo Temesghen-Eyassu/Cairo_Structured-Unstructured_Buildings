@@ -78,23 +78,25 @@ To classify buildings into discrete area bins (e.g., <16 m², 16–48 m², etc.)
 #### Purpose
 To compare the average size of buildings in different parts of the city by dividing the area into equal-sized hexagons. This helps show how building sizes vary between structured (planned) and unstructured (unplanned) area.Color represents the average building area within each hexagon.
 
-    - Left Map – Unstructured Area: Shows high variability in average building size, with a mix of small and large buildings. 
-       This reflects a less organized, informal development pattern.
-    - Right Map – Structured Area: Displays more uniform and consistent building sizes, with generally larger average areas. 
-      This suggests a planned, organized urban layout with regular building footprints.
+    - Left Map – Unstructured Area: Shows high variability in average building size, with a mix of small 
+      and large buildings. This reflects a less organized, informal development pattern.
+    - Right Map – Structured Area: Displays more uniform and consistent building sizes, with generally 
+      larger average areas. This suggests a planned, organized urban layout with regular 
+      building footprints.
 ![Image](https://github.com/user-attachments/assets/43b12144-eae9-4505-98b1-76b3deb95535)
 
 ### **Building Count per Hexagon Map**
 #### Purpose
 To visualize the density of buildings across structured and unstructured areas by counting how many buildings fall within each hexagonal cell. This reveals how building concentration varies spatially and highlights differences in urban density patterns between both types of development.
 
-    - Left Map – Unstructured Area shows very high building density in many hexes, with counts reaching over 
-      100 buildings per cell where bright yellow clusters in the center and south suggest intense, compact 
-      development. In addition, Density is uneven, indicating irregular land parceling and informal 
-      growth patterns. Building footprints are smaller and more numerous.
+    - Left Map – Unstructured Area shows very high building density in many hexes, with counts reaching 
+      over 100 buildings per cell where bright yellow clusters in the center and south suggest intense,
+      compact development. In addition, Density is uneven, indicating irregular land parceling and 
+      informal growth patterns. Building footprints are smaller and more numerous.
     - Right Map – Structured Area with much lower building counts per hex, with most values 
       between 4 and 16. It has consistent mid-range colors (orange/pink) show a regular and 
       spaced-out layout. In addotion, 
-      A few isolated bright hexes suggest local density increases, possibly due to apartment blocks or denser housing.
+      A few isolated bright hexes suggest local density increases, possibly due to apartment blocks or 
+      denser housing.
 ![Image](https://github.com/user-attachments/assets/021a4337-9bf1-43b8-a2e5-9184895883b5)
 
